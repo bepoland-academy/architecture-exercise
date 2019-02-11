@@ -74,22 +74,22 @@ Locally installed: java 8, maven 3.5, docker (one of the latest ones)
     * Verify if it was registered in discovery-service (see list of registered apps at http://localhost:8888 page)
 
 1. Update configuration of gateway-service to route requests to custom-service
-    * Update applicatioh.yml with parameters:
-```
-spring:
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-      routes:
-        - id: custom-service
-          uri: lb://custom-service
-          predicates:
-            - Path=/custom-service/**
-          filters:
-            - RewritePath=/custom-service/(?<path>.*), /$\{path}
-```    
+    * Update application.yml with parameters:
+    ```
+    spring:
+      cloud:
+        gateway:
+          discovery:
+            locator:
+              enabled: true
+          routes:
+            - id: custom-service
+              uri: lb://custom-service
+              predicates:
+                - Path=/custom-service/**
+              filters:
+                - RewritePath=/custom-service/(?<path>.*), /$\{path}
+    ```    
 1. Rebuild and restart gateway-service
     * verify if /hello endpoint of custom-service can be accessible via gateway service: http://localhost:8080/custom-service/hello
 
