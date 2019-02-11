@@ -11,7 +11,7 @@ Locally installed: java 8, maven 3.5, docker (one of the latest ones)
 
 # Exercise steps:
 1. Update /etc/hosts file at your local machine:
-    * `127.0.0.1	localhost discovery-service gateway-service custom-service`
+    * `127.0.0.1	localhost discovery-service gateway-service custom-service config-service`
 1. Create new java8/maven project
     * the parent of main pom.xml should be ``spring-boot-starter-parent`` (2.0.x version or above)
     * main pom.xml should have ``dependencyManagement`` element pointing to the one of latest stable spring-cloud-dependencies artifact (for instance : Finchley.SR2)    
