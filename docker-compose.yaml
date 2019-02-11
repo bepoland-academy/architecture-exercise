@@ -1,0 +1,34 @@
+version: "3.1"
+
+services:
+  discovery-service:
+    build:
+      context: ./discovery-service
+      dockerfile: Dockerfile
+    container_name: discovery-service
+    ports:
+      - "8888:8888"
+
+  config-service:
+    build:
+      context: ./config-service
+      dockerfile: Dockerfile
+    container_name: config-service
+    ports:
+      - "9999:9999"
+
+  gateway-service:
+    build:
+      context: ./gateway-service
+      dockerfile: Dockerfile
+    container_name: gateway-service
+    ports:
+      - "8080:8080"
+
+  custom-service:
+    build:
+      context: ./custom-service
+      dockerfile: Dockerfile
+    container_name: custom-service
+    ports:
+      - "8081:8081"
