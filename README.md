@@ -13,8 +13,8 @@ Locally installed: java 8, maven 3.5, docker (one of the latest ones)
 1. Update /etc/hosts file at your local machine:
     * `127.0.0.1	localhost discovery-service gateway-service custom-service`
 1. Create new java8/maven project
-    * the parent of main pom.xml should be spring-boot-starter-parent (2.0.x version or above)
-    * main pom.xml should have 'dependencyManagement' element pointing to the one of latest stable spring-cloud-dependencies artifact (for instance : Finchley.SR2)    
+    * the parent of main pom.xml should be ``spring-boot-starter-parent`` (2.0.x version or above)
+    * main pom.xml should have ``dependencyManagement`` element pointing to the one of latest stable spring-cloud-dependencies artifact (for instance : Finchley.SR2)    
 1. Create discovery-service maven module inside of main project
     * Add main application class with @EnableEurekaServer annotation
     * Add application.yaml (setting server.port to 8888)
@@ -128,7 +128,7 @@ spring:
     ENTRYPOINT ["java","-Xmx64m","-Djava.security.egd=file:/dev/./urandom","-jar","/discovery-service.jar"]
     ```
 
-1. Add Dockerfile to gateway-service/Dockerfile:
+1. Add to gateway-service/Dockerfile:
 
     ```
     FROM java:8
@@ -138,7 +138,7 @@ spring:
     ENTRYPOINT ["java","-Xmx64m","-Djava.security.egd=file:/dev/./urandom","-jar","/gateway-service.jar"]
     ```
 
-1. Add Dockerfile config-service/Dockerfile:
+1. Add config-service/Dockerfile:
 
     ```
     FROM java:8
@@ -148,7 +148,7 @@ spring:
     ENTRYPOINT ["java","-Xmx64m","-Djava.security.egd=file:/dev/./urandom","-jar","/config-service.jar"]
     ```
 
-1. Add Dockerfile custom-service/Dockerfile:
+1. Add custom-service/Dockerfile:
 
     ```
     FROM java:8
