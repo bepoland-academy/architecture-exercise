@@ -1,0 +1,21 @@
+eureka:
+  instance:
+    hostname: custom-service
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-service:8888/eureka/
+spring:
+  cloud:
+    config:
+      fail-fast: false
+---
+spring:
+  profiles: default, instance1
+server:
+  port: 8081
+
+---
+spring:
+  profiles: instance2
+server:
+  port: 8082

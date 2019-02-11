@@ -1,0 +1,23 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: custom-service
+          uri: lb://custom-service
+          predicates:
+            - Path=/custom-service/**
+          filters:
+            - RewritePath=/custom-service/(?<path>.*), /$\{path}
+eureka:
+  instance:
+    hostname: discovery-service
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:8888/eureka/
